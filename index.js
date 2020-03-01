@@ -37,10 +37,12 @@ app.post("/notify", (req, res) => {
         let message = req.body.topic;
 
         thirdparty.sendNotification(browseridentifier[i], message);
+        res.send("susses");
       }
     }
   } else {
     browseridentifier.push(req.body);
+    res.send("susses");
   }
 });
 app.listen(process.env.PORT || 3000, () => {
