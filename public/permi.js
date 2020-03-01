@@ -1,7 +1,7 @@
 const registerr = async () => {
   try {
     if ("serviceWorker" in navigator) {
-      const x = await navigator.serviceWorker.register("/service-worker.js");
+      const x = await navigator.serviceWorker.register("/sai.js");
     } else {
       alert("no service worker");
     }

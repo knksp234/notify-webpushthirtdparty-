@@ -6,13 +6,6 @@ var thirdparty = require("web-push");
 var browseridentifier = [];
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
-app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.json());
-thirdparty.setVapidDetails(
-  "mailto:knksp234@gmail.com",
-  "BOZrOZAASIEUEpOn1UhsdV7meIwyhyXqbQ_JJ-RKIQL3V2W-wqucHiBu_aGjrW0OkAkGTo5MyI5l6fmIJIallEc",
-  "ZxzIa_sU22ZoODgOm2mhGBcpB9mY3OTRPsV7vTKffIo"
-);
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -23,6 +16,14 @@ app.use((req, res, next) => {
 
   next();
 });
+app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.json());
+thirdparty.setVapidDetails(
+  "mailto:knksp234@gmail.com",
+  "BOZrOZAASIEUEpOn1UhsdV7meIwyhyXqbQ_JJ-RKIQL3V2W-wqucHiBu_aGjrW0OkAkGTo5MyI5l6fmIJIallEc",
+  "ZxzIa_sU22ZoODgOm2mhGBcpB9mY3OTRPsV7vTKffIo"
+);
+
 app.get("/", (req, res) => {
   res.render("home");
 });
