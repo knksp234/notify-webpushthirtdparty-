@@ -3,7 +3,7 @@ var path = require("path");
 var app = express();
 var bodyParser = require("body-parser");
 var thirdparty = require("web-push");
-var browseridentifier = null;
+var browseridentifier = [];
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
 app.use(express.static(__dirname + "/public"));
@@ -32,13 +32,15 @@ app.get("/admin", (req, res) => {
 
 app.post("/notify", (req, res) => {
   if (req.body.message == "sendnotification") {
-    if (browseridentifier != null) {
-      let message = req.body.topic;
+    if (browseridentifier.length != 0) {
+      for (var i = 0; i < browseridentifier.length; i++) {
+        let message = req.body.topic;
 
-      thirdparty.sendNotification(browseridentifier, message);
+        thirdparty.sendNotification(browseridentifier[i], message);
+      }
     }
   } else {
-    browseridentifier = req.body;
+    browseridentifier.push(req.body);
   }
 });
 app.listen(process.env.PORT || 3000, () => {

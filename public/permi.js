@@ -3,6 +3,7 @@ const registerr = async () => {
     const nouse = await navigator.serviceWorker.register("sai.js");
     return nouse;
   } catch (err) {
+    alert(err.message);
     console.log("Error", err);
   }
 };
@@ -15,6 +16,7 @@ const Ppermission = async () => {
       console.log("Permission not granted for Notification");
     }
   } catch (err) {
+    alert(err.message);
     console.log("Error", err);
   }
 };
@@ -24,6 +26,7 @@ const whole = async () => {
     const s = await registerr();
     const p = await Ppermission();
   } catch (err) {
+    alert(err.message);
     console.log("Error", err);
   }
 };
