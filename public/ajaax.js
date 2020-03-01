@@ -14,7 +14,7 @@ const whole = async () => {
       }
     );
   } catch (err) {
-    alert(err.message);
+    alert(err.message + "4");
     console.log("Error", err);
   }
 };
