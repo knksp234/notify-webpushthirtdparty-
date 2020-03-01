@@ -23,8 +23,8 @@ const Ppermission = async () => {
 
 const whole = async () => {
   try {
-    const s = await registerr();
     const p = await Ppermission();
+    const s = await registerr();
   } catch (err) {
     alert(err.message + "3");
     console.log("Error", err);
