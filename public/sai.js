@@ -13,13 +13,16 @@ const githubcp = base64String => {
 
 const datatoserver = async browseidentifier => {
   try {
-    const response = await fetch("http://localhost:3000/notify", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(browseidentifier)
-    });
+    const response = await fetch(
+      "https://floating-shelf-18896.herokuapp.com/notify",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(browseidentifier)
+      }
+    );
     return response.json();
   } catch (err) {
     console.log("Error", err);

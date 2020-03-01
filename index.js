@@ -41,6 +41,6 @@ app.post("/notify", (req, res) => {
     browseridentifier = req.body;
   }
 });
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("done");
 });
