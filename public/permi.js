@@ -1,7 +1,10 @@
 const registerr = async () => {
   try {
-    const nouse = await navigator.serviceWorker.register("sai.js");
-    return nouse;
+    if ("serviceWorker" in navigator) {
+      const x = await navigator.serviceWorker.register("/service-worker.js");
+    } else {
+      alert("no service worker");
+    }
   } catch (err) {
     alert(err.message + "1");
     console.log("Error", err);
@@ -10,7 +13,7 @@ const registerr = async () => {
 
 const Ppermission = async () => {
   try {
-    const p = await window.Notification.requestPermission();
+    const p = await Notification.requestPermission();
 
     if (p !== "granted") {
       console.log("Permission not granted for Notification");
